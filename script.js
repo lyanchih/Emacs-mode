@@ -69,6 +69,7 @@ var shortcuts = {
     // page scrolling
     'V': {'h': 'Scroll down 90%', 'f': function(e) { scroll(90, 0) } },
     'CTRL-V': {'f': function(e) { scroll(90, 0) } },
+    'META-V': {'h': 'Scroll up 90%', 'f': function(e) { scroll(-90, 0) } },
     'ALT-V': {'h': 'Scroll up 90%', 'f': function(e) { scroll(-90, 0) } },
     // home and end on > and SHIFT->
     '>': {'h': 'Scroll to end', 'f': function(e) { document.body.scrollTop = document.body.offsetHeight } },
