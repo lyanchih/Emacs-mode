@@ -231,7 +231,7 @@ var keydownevent = function(e) {
 	// backspace: page back
 	if (e.keyCode == 8) {
 	    if (e.preventDefault) e.preventDefault();
-	    history.go(-1);
+            history.go(input === 'META-\010' ? 1 : -1);
 	    return;
 	}
 	// if no shortcut exist in first press,
