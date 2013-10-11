@@ -401,6 +401,9 @@ var searchLinks = function(e, reg) {
     var sstr = "";
     var marked = 0;
     var name = reg ? "Regexp I-search: " : "I-search: ";
+    var scrollTo = function(ele) {
+        window.scrollTo(ele.offsetLeft, ele.offsetTop);
+    }
     log(name+sstr+" ("+links.length+" matches)");
     readQuit = function() {
 	document.body.classList.remove("emacsHighlightLinks");
@@ -432,6 +435,7 @@ var searchLinks = function(e, reg) {
 	    if (links.length > marked) {
 		links[marked].classList.remove("emacsHighlightLinksSelected");
 		marked = (marked+1) % links.length;
+                scrollTo(links[marked]);
 		links[marked].classList.add("emacsHighlightLinksSelected");
 	    }
 	}
@@ -442,6 +446,7 @@ var searchLinks = function(e, reg) {
 		links[marked].classList.remove("emacsHighlightLinksSelected");
 		marked = (marked-1) % links.length;
 		if (marked < 0) marked += links.length;
+                scrollTo(links[marked]);
 		links[marked].classList.add("emacsHighlightLinksSelected");
 	    }
 	}
@@ -471,7 +476,10 @@ var searchLinks = function(e, reg) {
 	}
 	links = nlinks;
 	marked = links.length ? marked % links.length : 0;
-	if (links.length > marked) links[marked].classList.add("emacsHighlightLinksSelected");
+	if (links.length > marked) {
+            links[marked].classList.add("emacsHighlightLinksSelected");
+            scrollTo(links[marked]);
+        }
 	log(name+sstr+" ("+links.length+" matches)");
     }
 }
