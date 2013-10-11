@@ -402,7 +402,13 @@ var searchLinks = function(e, reg) {
     var marked = 0;
     var name = reg ? "Regexp I-search: " : "I-search: ";
     var scrollTo = function(ele) {
-        window.scrollTo(ele.offsetLeft, ele.offsetTop);
+        var o_l = 0, o_t = 0;
+        while (ele && ele.tagName != 'BODY') {
+            o_l = ele.offsetLeft > o_l ? ele.offsetLeft : o_l;
+            o_t = ele.offsetTop > o_t ? ele.offsetTop : o_t;
+            ele = ele.parentElement;
+        }
+        window.scrollTo(o_l, o_t);
     }
     log(name+sstr+" ("+links.length+" matches)");
     readQuit = function() {
