@@ -204,6 +204,11 @@ var keydownevent = function(e) {
 	if (e.target != document.body) {
 	    switch (e.target.tagName) {
 	    case "INPUT":
+                if (!inSeq.length && e.keyCode === 32 && /^(?:checkbox|radio)$/.test(e.target.type)) {
+                    e.target.click();
+                    e.target.blur();
+                    return;
+                }
 	    case "TEXTAREA":
 	    case "SELECT":
 		// case "BUTTON":
